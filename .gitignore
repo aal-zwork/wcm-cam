@@ -1,0 +1,12 @@
+*.swp
+
+/*.env
+!/example*.env
+
+/etc/**/*
+!/etc/*-dist.sh
+
+/rclone/**/*
+!/rclone/*-dist.conf
+
+/docker-compose.override.yaml

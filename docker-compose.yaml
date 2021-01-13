@@ -1,0 +1,22 @@
+version: "3.3"
+
+services:
+    wcm-cam:
+        build: ./
+        restart: always
+        env_file:
+            - .wcm-cam.env
+        volumes: 
+            - ./etc:/usr/local/etc/motion
+            - ./rclone:/root/.config/rclone
+            - data:/var/lib/motion
+            - log:/var/log/motion
+        ports:
+            - "${WCM_CAM_STREAM_PORT:-8080}:${WCM_CAM_STREAM_PORT:-8080}"
+            - "${WCM_CAM_ADMIN_PORT:-8081}:${WCM_CAM_ADMIN_PORT:-8081}"
+        devices:
+            - /dev/video0:/dev/video0
+            - /dev/snd
+volumes:
+    data:
+    log:

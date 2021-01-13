@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+
+CAM_NAME=${WCM_CAM_NAME:-$(hostname)}
+echo "Start WCM CAM($CAM_NAME) at $(date -u +%Y-%m-%d_%H:%M)"
+
+if [ ! -f /usr/local/etc/motion/motion.conf ]; then
+    cp -f /usr/local/etc/motion-dist/motion.conf /usr/local/etc/motion/motion.conf
+fi 
+
+/usr/local/bin/motion -n
